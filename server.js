@@ -104,7 +104,9 @@ await server.register(FastifyVite, {
 await server.vite.ready();
 
 // ✅ Iniciar servidor como en el código antiguo
-await server.listen({ port: process.env.PORT || 3000 });
+const PORT = process.env.PORT || 3000;
+await server.listen({ port: PORT, host: "0.0.0.0" });
 
-console.log("🚀 Servidor iniciado en el puerto", process.env.PORT || 3000);
+console.log(`🚀 Servidor iniciado en http://0.0.0.0:${PORT}`);
+
 console.log(server.printRoutes()); // Ver rutas registradas
